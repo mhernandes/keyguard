@@ -1,9 +1,5 @@
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
+<?php include('u/partials/header.php'); ?>
+
 <a href="">asasd</a>
-</body>
-</html>
+
+<?php include('u/partials/footer.php'); ?>
