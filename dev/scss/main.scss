@@ -1,8 +1,10 @@
-a {
-	width: 100%;
-	display: block;
-	height: 300px; 
-	color: #000;
-	background-color: #000;
-	display: block;
-}
+// Include partials
+@import 'partials/base';
+@import 'partials/color';
+@import 'partials/mixins';
+@import 'partials/reset';
+@import 'partials/header';
+@import 'partials/footer';
+
+// Include Pages
+@import 'pages/general';

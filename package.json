@@ -17,14 +17,15 @@
   },
   "homepage": "https://github.com/mhernandes/keyguard#readme",
   "devDependencies": {
-    "gulp-rename": "~1.2.2",
-    "gulp-plumber": "~1.1.0",
-    "gulp-cssmin": "~0.1.7",
-    "gulp-concat": "~2.6.1",
-    "gulp": "~3.9.1",
-    "gulp-uglify": "~2.0.0",
+    "browser-sync": "^2.18.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect-php": "0.0.8",
+    "gulp-cssmin": "^0.1.7",
     "gulp-imagemin": "~3.1.1",
-    "gulp-sass": "~2.3.2",
-    "gulp-connect-php": "0.0.8"
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0"
   }
 }

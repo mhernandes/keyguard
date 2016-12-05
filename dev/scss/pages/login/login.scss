@@ -1,0 +1,61 @@
+.login {
+	//background-color: rgba(#000, 0.001);
+	background-color: $blue;
+	height: 100vh;
+	@include flex(wrap row);
+	@include flex-align(center, center, center);
+
+	&__form {
+		flex: 0 0 20%;
+		height: auto;
+		background-color: rgba(#fff, 0.12);
+		padding: 10px;
+
+		&_input,
+		&_label,
+		&_submit,
+		&_forgot {
+			color: #fff;
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+
+		&_input {
+			padding: 8px 13px;
+			background-color: transparent;
+			border: 2px solid rgba(#fff, 0.09);
+		}
+
+		&_label {
+			font-size: 15px;
+			padding: 9px 7px 2px 0;
+			font-weight: 400;
+			margin-top: 10px;
+			//color: $gray;
+
+			&:first-child {
+				margin-top: 0;
+				padding-top: 0;
+			}
+		}
+
+		&_submit {
+			background-color: $blue;
+			border-bottom: 3px solid rgba(#000, 0.4);
+			//color: #fff;
+			margin: 15px auto 7px;
+			padding: 10px 15px;
+			font-size: 12px;
+			text-transform: uppercase;
+			font-weight: bold;
+			//width: auto;
+		}
+
+		&_forgot {
+			font-size: 13px;
+			color: rgba(#fff, 0.7);
+			text-align: right;
+		}
+	}
+}
