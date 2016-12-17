@@ -1,0 +1,17 @@
+.identity {
+	@include flex(wrap row);
+	@include flex-align(space-between, center, center);
+	padding: 20px;
+
+	&__title,
+	&__buttons {
+		flex: 0 0 auto;
+	}
+
+	&__buttons {
+		&_unit {
+			display: inline-block;
+			padding: 0 20px;
+		}
+	}
+}
