@@ -1,0 +1,31 @@
+.menu {
+	width: 100%;
+	@include flex(wrap row);
+	@include flex-align(space-between, center, center);
+	background-color: darken($green, 4%);
+	color: #fff;
+	padding: 20px;
+
+	&__username,
+	&__links {
+		color: #fff;
+		flex: 0 0 auto;
+	}
+
+	&__username {
+		&_icon {
+			padding: 0 15px 0 11px;
+		}
+	}
+
+	&__links {
+		&_unit {
+			display: inline-block;
+			padding: 0 11px;
+
+			a {
+				color: #fff;
+			}
+		}
+	}
+}
