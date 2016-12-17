@@ -3,8 +3,6 @@
 	include 'partials/header.php';
 ?>
 
-<main class="keyguard">
-	<?php include 'partials/menu.php'; ?>
-</main>
+<?php include 'partials/menu.php'; ?>
 
 <?php include 'partials/footer.php'; ?>
