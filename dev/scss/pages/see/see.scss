@@ -1,0 +1,21 @@
+.see {
+	width: 100%;
+	@include flex(wrap row);
+	@include flex-align(space-between, flex-start, flex-start);
+
+	&__unit {
+		flex: 0 0 calc(96% / 4);
+		text-align: center;
+
+		&_link {
+			background-color: $blue;
+			color: #fff;
+			display: block;
+			font-size: 22px;
+			font-weight: bold;
+			height: auto;
+			padding: 70px 0;
+			width: 100%;
+		}
+	}
+}
