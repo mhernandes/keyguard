@@ -5,18 +5,7 @@
 
 <?php include 'partials/menu.php'; ?>
 
-<section class="identity">
-	<h2 class="identity__title">Title</h2>
-
-	<ul class="identity__buttons">
-		<li class="identity__buttons_unit">
-			<a href="">A</a>
-			<a href="">A</a>
-			<a href="">A</a>
-			<a href="">A</a>
-		</li>
-	</ul>
-</section>
+<?php include 'partials/identity.php'; ?>
 
 <section class="see">
 	<?php for ($i = 0; $i < 4; $i++) { ?>
