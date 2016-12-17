@@ -1,0 +1,13 @@
+.create {
+	&__form {
+		width: 100%;
+		height: auto;
+		@include flex(wrap row);
+		@include flex-align(flex-start, flex-start, flex-start);
+
+		&_label,
+		&_input {
+			flex: 0 0 auto;
+		}
+	}
+}
