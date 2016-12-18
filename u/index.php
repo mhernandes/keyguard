@@ -20,6 +20,8 @@
 		
 		<label for="" class="create__form_label">Password</label>
 		<input type="password" class="create__form_input" name="" id="">
+
+		<input type="submit" class="create__form_input" value="Create">
 	</form>
 </section>
 
