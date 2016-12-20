@@ -1,0 +1,13 @@
+.edit {
+	.create {
+		&__form {
+			&_input {
+				&[value="Delete"] {
+					background-color: $red;
+					margin-left: auto;
+					margin-right: 14%;
+				}
+			}
+		}
+	}
+}
