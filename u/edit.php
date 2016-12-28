@@ -1,4 +1,13 @@
-<section class="create">
+<?php
+	$page_name = 'KeyGuard - PassManager';
+	include 'partials/header.php';
+?>
+
+<?php include 'partials/menu.php'; ?>
+
+<?php include 'partials/identity.php'; ?>
+
+<section class="edit create">
 	<form action="" class="create__form">
 		<label for="" class="create__form_label">Name</label>
 		<input type="text" class="create__form_input" name="" placeholder="Facebook" id="">
@@ -12,6 +21,9 @@
 		<label for="" class="create__form_label">Password</label>
 		<input type="password" class="create__form_input" name="" id="">
 
-		<input type="submit" class="create__form_input" value="Create">
+		<input type="submit" class="create__form_input" value="Update">
+		<input type="submit" class="create__form_input" value="Delete">
 	</form>
 </section>
+
+<?php include 'partials/footer.php'; ?>
