@@ -7,4 +7,6 @@
 
 <?php include 'partials/identity.php'; ?>
 
+<section class="generate"></section>
+
 <?php include 'partials/footer.php'; ?>
