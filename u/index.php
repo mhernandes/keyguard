@@ -1,11 +1,12 @@
 <?php
 	$page_name = 'KeyGuard - PassManager';
 	include 'partials/header.php';
+	include 'partials/menu.php';
+	include 'partials/identity.php';
+	include "dao/access.class.php";
+
+	$ac = new Access();
 ?>
-
-<?php include 'partials/menu.php'; ?>
-
-<?php include 'partials/identity.php'; ?>
 
 <section class="see">
 	<?php for ($i = 0; $i < 4; $i++) { ?>

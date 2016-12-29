@@ -4,7 +4,7 @@
 	 */
 	class Access {
 		private $host = "localhost";
-		private $user = "devmath";
+		private $user = "root";
 		private $passwd = "devmath";
 		private $database = "keyguard";
 
@@ -12,7 +12,7 @@
 		
 	    // Start a connection
 	    public function __construct() {
-	        $this->connection = new PDO("mysql:host=".$this->host.";dbname=".$this->database, $user, $passwd);
+	        $this->connection = new PDO("mysql:host=".$this->host.";dbname=".$this->database, $this->user, $this->passwd);
 	    }
 	}
 ?>
