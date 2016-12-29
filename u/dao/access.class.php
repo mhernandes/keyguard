@@ -14,5 +14,9 @@
 	    public function __construct() {
 	        $this->connection = new PDO("mysql:host=".$this->host.";dbname=".$this->database, $this->user, $this->passwd);
 	    }
+
+	    public function prepare($value) {
+	    	return $this->connection->prepare($value);
+	    }
 	}
 ?>
