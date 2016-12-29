@@ -5,28 +5,28 @@
 
 	<ul class="menu__links">
 		<li class="menu__links_unit">
-			<a href="/keyguard/u/">
+			<a href="/u/">
 				<i class="menu__links_unit_icon" icon=""></i>
 				Home
 			</a>
 		</li>
 
 		<li class="menu__links_unit">
-			<a href="create">
+			<a href="create.php">
 				<i class="menu__links_unit_icon" icon=""></i>
 				Create
 			</a>
 		</li>
 
 		<li class="menu__links_unit">
-			<a href="edit">
+			<a href="edit.php">
 				<i class="menu__links_unit_icon" icon=""></i>
 				Edit
 			</a>
 		</li>
 
 		<li class="menu__links_unit">
-			<a href="generate">
+			<a href="generate.php">
 				<i class="menu__links_unit_icon" icon=""></i>
 				Generate
 			</a>
