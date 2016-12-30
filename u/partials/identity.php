@@ -1,5 +1,5 @@
 <section class="identity">
-	<h2 class="identity__title">Title</h2>
+	<h2 class="identity__title"><?php echo $page_name; ?></h2>
 </section>
 
 <?php /* 

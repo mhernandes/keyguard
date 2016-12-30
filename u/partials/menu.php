@@ -5,7 +5,7 @@
 
 	<ul class="menu__links">
 		<li class="menu__links_unit">
-			<a href="/u/">
+			<a href="index.php">
 				<i class="menu__links_unit_icon" icon=""></i>
 				Home
 			</a>

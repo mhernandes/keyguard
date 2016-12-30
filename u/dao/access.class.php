@@ -1,6 +1,8 @@
 <?php
 	/**
-	 * summary
+	 * @name Access
+	 * Class for accessing database and returning the connection of PDO
+	 *
 	 */
 	class Access {
 		private $host = "localhost";
