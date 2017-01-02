@@ -34,6 +34,20 @@
 	    	$this->connection->prepare($value);
 	    }
 
+	    // Set a SQL query
+	    protected function query($query) {
+	    	return $this->connection->query($query);
+	    }
+
+	    // Execute a MySQL script
+	    protected function execute($value) {
+	    	try {
+	    		$this->connection->execute();
+	    	} catch (PDOException $e) {
+	    		die($this->error_messages["execute"].$e->getMessagge());
+	    	}
+	    }
+
 	    // Inserting data
 	    protected function insert($insert = array()) {
 	    	if (!$insert) { return false; }
@@ -71,10 +85,7 @@
 	    	}
 	    }
 
-	    protected function query($query) {
-	    	return $this->connection->query($query);
-	    }
-
+	    // Fetch data
 	    protected function fetch($kind = "all") {
 	    	switch ($kind) {
 	    		case "all":
@@ -95,13 +106,20 @@
 	    	}
 	    }
 
-	    // Execute a MySQL script
-	    protected function execute($value) {
-	    	try {
-	    		$this->connection->execute();
-	    	} catch (PDOException $e) {
-	    		die($this->error_messages["execute"].$e->getMessagge());
+	    // Do a simple select query into db and return them
+	    protected function select($selecting = array()) {
+	    	$what = $selecting["what"];
+	    	$from = $selecting["from"];
+	    	$where = "";
+
+	    	if (array_key_exists("where", $selecting)) {
+	    		$where = " WHERE ".$selecting["where"];
 	    	}
+
+	    	$final_query = "SELECT ".$what." FROM ".$from.$where;
+
+	    	$this->connection->prepare($final_query);
+	    	return $this->connection->fetchAll();
 	    }
 
 	    // Counts the total rows of the current object.
