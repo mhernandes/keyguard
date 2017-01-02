@@ -75,6 +75,26 @@
 	    	return $this->connection->query($query);
 	    }
 
+	    protected function fetch($kind = "all") {
+	    	switch ($kind) {
+	    		case "all":
+	    			return $this->connection->fetchAll();
+	    			break;
+
+	    		case "object":
+	    			return $this->connection->fetchObject();
+	    			break;
+
+	    		case "column":
+	    			return $this->connection->fetchColumn();
+	    			break;
+
+	    		case "line":
+	    			return $this->connection->fetch();
+	    			break;
+	    	}
+	    }
+
 	    // Execute a MySQL script
 	    protected function execute($value) {
 	    	try {
