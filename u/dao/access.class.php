@@ -71,6 +71,10 @@
 	    	}
 	    }
 
+	    protected function query($query) {
+	    	return $this->connection->query($query);
+	    }
+
 	    // Execute a MySQL script
 	    protected function execute($value) {
 	    	try {
