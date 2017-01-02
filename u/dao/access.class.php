@@ -34,6 +34,28 @@
 	    	$this->connection->prepare($value);
 	    }
 
+	    // Inserting data
+	    protected function insert($insert = array()) {
+	    	if (!$insert) { return false; }
+
+	    	$query = $tables = $values = "";
+
+	    	for ($i = 0; $i < count($insert); $i++) {
+	    		$tables .= $insert[$i].", ";
+	    	}
+
+
+	    	for ($i = 0; $i < count($insert); $i++) {
+	    		$values .= ":".$insert[$i].", ";
+	    	}
+
+	    	$tables = str_replace(", ", "", $tables, strrpos($tables, ", "));
+	    	$values = str_replace(", ", "", $values, strrpos($values, ", "));
+	    	$query = "INSERT INTO ".$table."(".$tables.") VALUES (".$values.")";
+
+	    	$this->prepare($query);
+	    }
+
 	    // Bind a MySQL script parameters
 	    protected function bind($parameters, $bindparam = false) {
 	    	if (is_array($parameters)) {
@@ -56,6 +78,11 @@
 	    	} catch (PDOException $e) {
 	    		die($this->error_messages["execute"].$e->getMessagge());
 	    	}
+	    }
+
+	    // Counts the total rows of the current object.
+	    protected function rowCount() {
+	    	return $this->connection->rowCount();
 	    }
 
 	    // Close connection
