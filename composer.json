@@ -1,0 +1,13 @@
+{
+	"name": "Nome do projeto",
+    "description": "Breve descrição do que a aplicação se propoe a fazer",
+    "authors": [
+    	{
+    		"name": "Hernandes",
+    		"email": "midia.matheus@gmail.com"
+    	}
+    ],
+    "require": {
+    	"php": ">=7.0.0"
+    }
+}
