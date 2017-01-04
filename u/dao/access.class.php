@@ -1,4 +1,6 @@
 <?php
+	namespace DAO;
+
 	/**
 	 * @name Access
 	 * @description Class for accessing database and returning the connection of PDO
