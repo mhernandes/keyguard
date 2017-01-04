@@ -15,6 +15,7 @@
 			"connection" => "Connection failed due to: ",
 			"execute" => "Failed to execute MySQL script due to: "
 		);
+		protected $instance;
 
 		private $connection;
 
@@ -42,7 +43,7 @@
 	    }
 
 	    // Execute a MySQL script
-	    protected function execute($value) {
+	    protected function execute() {
 	    	try {
 	    		$this->connection->execute();
 	    	} catch (PDOException $e) {
@@ -128,6 +129,14 @@
 	    protected function rowCount() {
 	    	return $this->connection->rowCount();
 	    }
+
+	    protected static function getInstance() {
+		    if (!isset(static::$instance)) {
+		        static::$instance = new static;
+		    }
+
+		    return static::$instance;
+		}
 
 	    // Close connection
 	    protected function close() {
