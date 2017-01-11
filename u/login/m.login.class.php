@@ -1,5 +1,5 @@
 <?php
-	namespace Login;
+	namespace Auth;
 
 	/**
 	 * summary
