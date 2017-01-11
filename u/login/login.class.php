@@ -45,5 +45,13 @@
 	    public function __destruct() {
 	    	$this->access->close();
 	    }
+
+	    protected static function getInstance() {
+		    if (!isset(static::$instance)) {
+		        static::$instance = new static;
+		    }
+
+		    return static::$instance;
+		}
 	}
 ?>
