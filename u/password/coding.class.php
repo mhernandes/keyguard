@@ -4,7 +4,7 @@
 	/**
 	 * summary
 	 */
-	class Hash {
+	class Coding {
 	    /**
 	     * summary
 	     */
