@@ -4,11 +4,11 @@
 	/**
 	 * summary
 	 */
-	class ManageAccess extends Access {
+	class ManageAccess {
 	    public $access;
 
 	    public function __construct() {
-	        return $this->access = Access::getInstance();
+	        return $this->access = new Access();
 	    }
 
 	    public function prepare($query) {

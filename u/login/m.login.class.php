@@ -4,11 +4,11 @@
 	/**
 	 * summary
 	 */
-	class ManageLogin extends Login {
+	class ManageLogin {
 	    public $login;
 
 	    public function __construct() {
-	        $this->login = Login::getInstance();
+	        $this->login = new Login();
 	    }
 
 	    public function set($userdata = array()) {
