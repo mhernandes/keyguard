@@ -1,10 +1,10 @@
 <?php
-	namespace ;
+	namespace Key;
 
 	/**
 	 * summary
 	 */
-	class Name {
+	class Password {
 	    /**
 	     * summary
 	     */
