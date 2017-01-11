@@ -3,9 +3,6 @@
 	include 'partials/header.php';
 	include 'partials/menu.php';
 	include 'partials/identity.php';
-	include "dao/access.class.php";
-
-	$ac = new Access();
 ?>
 
 <section class="see">
