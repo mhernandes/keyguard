@@ -1,0 +1,2 @@
+# KeyGuard
+This is a basic password manager. I created that just for practice and I separated password insertion and encoding in two classes, so you can use any type of encode/hash/whatever you wanna use.
