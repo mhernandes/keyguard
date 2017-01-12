@@ -21,7 +21,7 @@
 
 	    // Start a connection
 	    public function __construct($exception = false) {
-	        try {
+	        /*try {
 	        	$this->connection = new PDO("mysql:host=".$this->host.";dbname=".$this->database, $this->user, $this->passwd);
 
 	        	if ($exception) {
@@ -29,7 +29,8 @@
 	        	}
 	        } catch (PDOException $e) {
 	        	die($this->error_messages["connection"].$e->getMessagge());
-	        }
+	        }*/
+	        echo 'string';
 	    }
 
 	    // Prepare a MySQL script
