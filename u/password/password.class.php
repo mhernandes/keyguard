@@ -16,13 +16,13 @@
 		private $access = false;
 		private $coding = false;
 
-	    public function __construct() {}
-
 	    private function startAccess() {
 	    	if (!$this->access) {
 	    		$this->access = new DAO\ManageAccess();
 	    	}
 	    }
+
+	    public function __construct() { $this->startAccess(); }
 
 	    public function createPassword($data = array()) {
 	    	$this->pass_data["user_mk"] = $data["user_mk"];
@@ -32,14 +32,33 @@
 	    	$this->pass_data["password"] = $data["password"];
 	    }
 
-	    public function checkUser() {
-	    	$this->startAccess();
-	    	$user_mk = $this->pass_data['user_mk'];
+	    public function checkUser($user_mk = false) {
+
+	    	if (!$user_mk) { $user_mk = $this->pass_data['user_mk']; }
+
 	    	$query = "SELECT mk FROM users WHERE mk = '$user_mk'";
 	    	$this->access->prepare($query);
 	    	
 	    	if($this->access->fetch()) {
 	    		return true;
+	    	} else {
+	    		return false;
+	    	}
+	    }
+
+	    public function getPasswords($user_mk = false) {
+	    	if (!$this->checkUser($user_mk)) { return false; }
+
+	    	$query = array(
+	    		"what" => "*", 
+	    		"from" => "accounts",
+	    		"where" => "user_mk = '$this->user_mk'"
+	    	);
+
+	    	$ret = $this->access->select($query);
+
+	    	if ($ret) {
+	    		return $ret;
 	    	} else {
 	    		return false;
 	    	}
