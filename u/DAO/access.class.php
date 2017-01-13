@@ -1,5 +1,5 @@
 <?php
-	namespace DAO;
+	namespace u\DAO;
 
 	/**
 	 * @name Access

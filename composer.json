@@ -1,0 +1,18 @@
+{
+    "name": "root/keyguard",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matheus Hernandes",
+            "email": "midia.matheus@gmail.com"
+        }
+    ],
+    "autoload": {
+		"psr-4": {
+			"u\\DAO\\": "/u/DAO/",
+			"Auth\\": "/u/auth",
+			"Key\\": "/u/password"
+		}
+	}
+}
