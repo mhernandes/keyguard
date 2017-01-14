@@ -1,7 +1,7 @@
 <?php
 	namespace Auth;
 	use DAO\ManageAccess;
-	
+	use \PDO;
 	/**
 	 * summary
 	 */

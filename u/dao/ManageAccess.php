@@ -12,16 +12,16 @@
 	        return $this->access = new Access();
 	    }
 
-	    public function prepare($query) {
-	    	return $this->access->prepare($query);
+	    public function prepare($query, $driver_options) {
+	    	return $this->access->prepare($query, $driver_options);
 	    }
 
 	    public function query($query) {
 	    	return $this->access->query($query);
 	    }
 
-	    public function execute() {
-	    	return $this->access->execute();
+	    public function execute($execute) {
+	    	return $this->access->execute($execute);
 	    }
 
 	    public function insert($value = array()) {

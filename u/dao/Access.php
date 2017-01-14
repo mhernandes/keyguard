@@ -16,6 +16,7 @@
 			"execute" => "Failed to execute MySQL script due to: "
 		);
 		protected $instance;
+		protected $statement;
 
 		private $connection;
 
@@ -33,8 +34,9 @@
 	    }
 
 	    // Prepare a MySQL script
-	    public function prepare($value) {
-	    	$this->connection->prepare($value);
+	    public function prepare($query, $driver_options) {
+	    	$this->statement = $this->connection->prepare($query, $driver_options);
+	    	return $this;
 	    }
 
 	    // Set a SQL query
@@ -43,12 +45,13 @@
 	    }
 
 	    // Execute a MySQL script
-	    public function execute() {
+	    public function execute($execute) {
 	    	try {
-	    		$this->connection->execute();
+	    		$this->statement->execute($execute);
 	    	} catch (PDOException $e) {
 	    		die($this->error_messages["execute"].$e->getMessagge());
 	    	}
+	    	return $this;
 	    }
 
 	    // Inserting data
@@ -92,19 +95,19 @@
 	    public function fetch($kind = "all") {
 	    	switch ($kind) {
 	    		case "all":
-	    			return $this->connection->fetchAll();
+	    			return $this->statement->fetch(PDO::FETCH_ASSOC);
 	    			break;
 
 	    		case "object":
-	    			return $this->connection->fetchObject();
+	    			return $this->statement->fetchObject();
 	    			break;
 
 	    		case "column":
-	    			return $this->connection->fetchColumn();
+	    			return $this->statement->fetchColumn();
 	    			break;
 
 	    		case "line":
-	    			return $this->connection->fetch();
+	    			return $this->statement->fetch();
 	    			break;
 	    	}
 	    }

@@ -10,7 +10,11 @@
 		);
 
 		$login->set($login_data);
-		$login->check();
+		if($login->check()) {
+			echo 'go';
+		} else {
+			echo 'fall';
+		}
 	}
 ?>
 <html>
