@@ -3,7 +3,7 @@
 	include 'partials/header.php';
 	include 'partials/menu.php';
 	include 'partials/identity.php';
-	require_once '/vendor/autoload.php';
+	require_once '../vendor/autoload.php';
 ?>
 
 <section class="see">
