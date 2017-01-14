@@ -10,7 +10,7 @@
     ],
     "autoload": {
 		"psr-4": {
-			"DAO\\": "u/DAO",
+			"DAO\\": "u/dao",
 			"Auth\\": "u/auth",
 			"Key\\": "u/password"
 		}
