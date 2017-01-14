@@ -13,7 +13,7 @@
 	    }
 
 	    public function set($userdata = array()) {
-	    	$this->login->setData();
+	    	$this->login->setData($userdata);
 	    }
 
 	    public function get() {

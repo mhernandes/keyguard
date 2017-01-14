@@ -17,12 +17,12 @@
 	        $this->access = new ManageAccess();
 	    }
 
-	    protected function setData($userdata = array()) {
+	    public function setData($userdata = array()) {
 	    	$this->email = $userdata["email"];
 	    	$this->password = $userdata["password"];
 	    }
 
-	    protected function getData() {
+	    public function getData() {
 	    	$userdata = array(
 	    		"email" => $this->email,
 	    		"password" => $this->password
@@ -31,8 +31,13 @@
 	    	return $userdata;
 	    }
 
-	    protected function checkUser() {
-	    	$query = "SELECT email, password FROM users WHERE email = '$this->email' AND password = '$this->password'";
+	    protected function decodePass() {
+	    	return $this->password;
+	    }
+
+	    public function checkUser() {
+	    	$pass = $this->decodePass();
+	    	$query = "SELECT email, password FROM users WHERE email = '$this->email' AND password = '$pass'";
 	    	$this->access->prepare($query);
 	    	$fetching = $this->access->fetch();
 	    	

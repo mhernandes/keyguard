@@ -1,3 +1,18 @@
+<?php
+	require 'vendor/autoload.php';
+	use Auth\ManageLogin;
+	$login = new ManageLogin();
+
+	if (isset($_POST["logging"])) {
+		$login_data = array(
+			"email" => $_POST["email"],
+			"password" => $_POST["password"]
+		);
+
+		$login->set($login_data);
+		$login->check();
+	}
+?>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -14,7 +29,7 @@
 		<label class="login__form_label" for="pass">Password</label>
 		<input type="password" class="login__form_input" id="pass" name="password" placeholder="Password">
 		
-		<input type="submit" class="login__form_submit" value="Log in" name="submit">
+		<input type="submit" class="login__form_submit" value="Log in" name="logging">
 		<a href="" class="login__form_forgot">Forgot your password?</a>
 	</form>
 </section>
