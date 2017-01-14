@@ -37,8 +37,16 @@
 
 	    public function checkUser() {
 	    	$pass = $this->decodePass();
-	    	$query = "SELECT email, password FROM users WHERE email = '$this->email' AND password = '$pass'";
-	    	$this->access->prepare($query);
+	    	$query = "SELECT email, password FROM users WHERE email = :email AND password = :password";
+	    	$driver_options = array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY);
+	    	
+	    	$execute = array(
+	    		":email" => $this->email,
+	    		":password" => $pass 
+	    	);
+
+	    	$this->access->prepare($query, $driver_options);
+	    	$this->access->execute($execute);
 	    	$fetching = $this->access->fetch();
 	    	
 	    	if ($fetching) {
