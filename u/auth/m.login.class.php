@@ -1,5 +1,6 @@
 <?php
 	namespace Auth;
+	use Auth\Login;
 
 	/**
 	 * summary

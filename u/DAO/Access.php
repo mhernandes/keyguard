@@ -1,5 +1,5 @@
 <?php
-	namespace u\DAO;
+	namespace DAO;
 
 	/**
 	 * @name Access
@@ -21,7 +21,7 @@
 
 	    // Start a connection
 	    public function __construct($exception = false) {
-	        /*try {
+	        try {
 	        	$this->connection = new PDO("mysql:host=".$this->host.";dbname=".$this->database, $this->user, $this->passwd);
 
 	        	if ($exception) {
@@ -29,22 +29,21 @@
 	        	}
 	        } catch (PDOException $e) {
 	        	die($this->error_messages["connection"].$e->getMessagge());
-	        }*/
-	        echo 'string';
+	        }
 	    }
 
 	    // Prepare a MySQL script
-	    protected function prepare($value) {
+	    public function prepare($value) {
 	    	$this->connection->prepare($value);
 	    }
 
 	    // Set a SQL query
-	    protected function query($query) {
+	    public function query($query) {
 	    	return $this->connection->query($query);
 	    }
 
 	    // Execute a MySQL script
-	    protected function execute() {
+	    public function execute() {
 	    	try {
 	    		$this->connection->execute();
 	    	} catch (PDOException $e) {
@@ -53,7 +52,7 @@
 	    }
 
 	    // Inserting data
-	    protected function insert($insert = array()) {
+	    public function insert($insert = array()) {
 	    	if (!$insert) { return false; }
 
 	    	$query = $tables = $values = "";
@@ -75,7 +74,7 @@
 	    }
 
 	    // Bind a MySQL script parameters
-	    protected function bind($parameters, $bindparam = false) {
+	    public function bind($parameters, $bindparam = false) {
 	    	if (is_array($parameters)) {
 	    		foreach ($parameters as $key => $value) {
 	    			if (!$bindparam) {
@@ -90,7 +89,7 @@
 	    }
 
 	    // Fetch data
-	    protected function fetch($kind = "all") {
+	    public function fetch($kind = "all") {
 	    	switch ($kind) {
 	    		case "all":
 	    			return $this->connection->fetchAll();
@@ -111,7 +110,7 @@
 	    }
 
 	    // Do a simple select query into db and return them
-	    protected function select($selecting = array()) {
+	    public function select($selecting = array()) {
 	    	$what = $selecting["what"];
 	    	$from = $selecting["from"];
 	    	$where = "";
@@ -127,11 +126,11 @@
 	    }
 
 	    // Counts the total rows of the current object.
-	    protected function rowCount() {
+	    public function rowCount() {
 	    	return $this->connection->rowCount();
 	    }
 
-	    protected static function getInstance() {
+	    public static function getInstance() {
 		    if (!isset(static::$instance)) {
 		        static::$instance = new static;
 		    }
@@ -140,7 +139,7 @@
 		}
 
 	    // Close connection
-	    protected function close() {
+	    public function close() {
 	    	$this->connection = NULL;
 	    }
 

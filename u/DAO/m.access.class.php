@@ -1,5 +1,6 @@
 <?php
 	namespace DAO;
+	use DAO\Access;
 
 	/**
 	 * summary

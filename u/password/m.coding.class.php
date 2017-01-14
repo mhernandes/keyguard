@@ -1,6 +1,6 @@
 <?php
 	namespace Key;
-
+	use Key\Coding;
 	/**
 	 * summary
 	 */
@@ -10,7 +10,7 @@
 	     * summary
 	     */
 	    public function __construct() {
-	        $this->coding = new Key\Coding();
+	        $this->coding = new Coding();
 	    }
 
 	    public function set($pass) {

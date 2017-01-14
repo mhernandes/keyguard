@@ -1,5 +1,6 @@
 <?php
 	namespace Auth;
+	use DAO\ManageAccess;
 	
 	/**
 	 * summary
@@ -13,7 +14,7 @@
 	     */
 
 	    public function __construct() {
-	        $this->access = new DAO\ManageAccess();
+	        $this->access = new ManageAccess();
 	    }
 
 	    protected function setData($userdata = array()) {

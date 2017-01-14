@@ -1,5 +1,6 @@
 <?php
 	namespace Key;
+	use DAO\ManageAccess;
 
 	/**
 	 * summary
@@ -18,7 +19,7 @@
 
 	    private function startAccess() {
 	    	if (!$this->access) {
-	    		$this->access = new DAO\ManageAccess();
+	    		$this->access = new ManageAccess();
 	    	}
 	    }
 
