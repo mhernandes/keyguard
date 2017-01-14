@@ -12,7 +12,7 @@
 		<input type="text" class="login__form_input" id="email" name="email" placeholder="Email">
 		
 		<label class="login__form_label" for="pass">Password</label>
-		<input type="text" class="login__form_input" id="pass" name="password" placeholder="Password">
+		<input type="password" class="login__form_input" id="pass" name="password" placeholder="Password">
 		
 		<input type="submit" class="login__form_submit" value="Log in" name="submit">
 		<a href="" class="login__form_forgot">Forgot your password?</a>
