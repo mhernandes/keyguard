@@ -1,6 +1,6 @@
 <?php
 	namespace DAO;
-
+	use \PDO;
 	/**
 	 * @name Access
 	 * @description Class for accessing database and returning the connection of PDO
