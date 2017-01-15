@@ -34,14 +34,9 @@
 	    }
 
 	    // Prepare a MySQL script
-	    public function prepare($query, $driver_options) {
+	    public function prepare($query, $driver_options = array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY)) {
 	    	$this->statement = $this->connection->prepare($query, $driver_options);
 	    	return $this;
-	    }
-
-	    // Set a SQL query
-	    public function query($query) {
-	    	return $this->connection->query($query);
 	    }
 
 	    // Execute a MySQL script
@@ -98,40 +93,6 @@
 
 	    public function fetchAll() {
 	    	return $this->statement->fetchAll();
-	    }
-
-	    // Do a simple select query into db and return them
-	    public function select($selecting = array()) {
-	    	$what = $selecting["what"];
-	    	$from = $selecting["from"];
-	    	$where = "";
-
-	    	if (array_key_exists("where", $selecting)) {
-	    		$where = " WHERE ".$selecting["where"];
-	    	}
-
-	    	$final_query = "SELECT ".$what." FROM ".$from.$where;
-
-	    	$this->connection->prepare($final_query);
-	    	return $this->connection->fetchAll();
-	    }
-
-	    // Counts the total rows of the current object.
-	    public function rowCount() {
-	    	return $this->connection->rowCount();
-	    }
-
-	    public static function getInstance() {
-		    if (!isset(static::$instance)) {
-		        static::$instance = new static;
-		    }
-
-		    return static::$instance;
-		}
-
-	    // Close connection
-	    public function close() {
-	    	$this->connection = NULL;
 	    }
 
 	    // Close connection on destruct

@@ -12,12 +12,8 @@
 	        return $this->access = new Access();
 	    }
 
-	    public function prepare($query, $driver_options) {
-	    	return $this->access->prepare($query, $driver_options);
-	    }
-
-	    public function query($query) {
-	    	return $this->access->query($query);
+	    public function prepare($query) {
+	    	return $this->access->prepare($query);
 	    }
 
 	    public function execute($execute) {
@@ -38,18 +34,6 @@
 
 	    public function fetchAll() {
 	    	return $this->access->fetchAll();
-	    }
-
-	    public function select($value = array()) {
-	    	return $this->access->select($value);
-	    }
-
-	    public function rowCount() {
-	    	return $this->access->rowCount();
-	    }
-
-	    public function close() {
-	    	return $this->access->close();
 	    }
 
 	    public function __destruct() {

@@ -38,15 +38,13 @@
 	    public function checkUser() {
 	    	$pass = $this->password;
 	    	$query = "SELECT email, password FROM users WHERE email = :email AND password = :password";
-
-	    	$driver_options = array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY);
 	    	
 	    	$execute = array(
 	    		":email" => $this->email,
 	    		":password" => $pass 
 	    	);
 
-	    	$this->access->prepare($query, $driver_options);
+	    	$this->access->prepare($query);
 	    	$this->access->execute($execute);
 	    	$fetching = $this->access->fetch();
 	    	
