@@ -32,8 +32,12 @@
 	    	return $this->access->bind($parameters, $bindparam);
 	    }
 
-	    public function fetch($kind = "all") {
-	    	return $this->access->fetch($kind);
+	    public function fetch() {
+	    	return $this->access->fetch();
+	    }
+
+	    public function fetchAll() {
+	    	return $this->access->fetchAll();
 	    }
 
 	    public function select($value = array()) {

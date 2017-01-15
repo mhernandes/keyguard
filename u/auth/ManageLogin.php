@@ -17,11 +17,11 @@
 	    }
 
 	    public function get() {
-	    	$this->login->getData();
+	    	return $this->login->getData();
 	    }
 
 	    public function check() {
-	    	$this->login->checkUser();
+	    	return $this->login->checkUser();
 	    }
 	}
 ?>

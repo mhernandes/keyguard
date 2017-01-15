@@ -11,9 +11,10 @@
 
 		$login->set($login_data);
 		if($login->check()) {
+			// Start a new session with user's data
 			echo 'go';
 		} else {
-			echo 'fall';
+			echo 'fall<br>';
 		}
 	}
 ?>
