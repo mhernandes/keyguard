@@ -45,7 +45,7 @@
 	    }
 
 	    // Execute a MySQL script
-	    public function execute($execute) {
+	    public function execute($execute = array()) {
 	    	try {
 	    		$this->statement->execute($execute);
 	    	} catch (PDOException $e) {
@@ -92,24 +92,12 @@
 	    }
 
 	    // Fetch data
-	    public function fetch($kind = "all") {
-	    	switch ($kind) {
-	    		case "all":
-	    			return $this->statement->fetch(PDO::FETCH_ASSOC);
-	    			break;
+	    public function fetch() {
+			return $this->statement->fetch();
+	    }
 
-	    		case "object":
-	    			return $this->statement->fetchObject();
-	    			break;
-
-	    		case "column":
-	    			return $this->statement->fetchColumn();
-	    			break;
-
-	    		case "line":
-	    			return $this->statement->fetch();
-	    			break;
-	    	}
+	    public function fetchAll() {
+	    	return $this->statement->fetchAll();
 	    }
 
 	    // Do a simple select query into db and return them
