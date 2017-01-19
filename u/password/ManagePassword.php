@@ -26,8 +26,8 @@
 	    	return $this->password->getAllPasswords($mk_user);
 	    }
 
-	    public function createPassword($mk_user = false) {
-	    	return $this->password->createPassword($mk_user);
+	    public function createPassword() {
+	    	return $this->password->createPassword();
 	    }
 	}
 ?>

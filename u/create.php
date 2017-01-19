@@ -22,7 +22,7 @@
 		);
 
 		$password->setPasswordData($data);
-		if ($password->createPassword($_SESSION["mk"])) {
+		if ($password->createPassword()) {
 			echo 'Go!';
 		} else {
 			echo 'Failed!';

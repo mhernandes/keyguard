@@ -37,16 +37,14 @@
 	    public function getAllPasswords($mk_user = false) {
 	    	$query = "SELECT * FROM accounts WHERE mk_user = :mk_user";
 
-	    	$data = $this->getPasswordData();
-
-	    	$to_execute = array(":mk_user" => $data["mk_user"]);
+	    	$to_execute = array(":mk_user" => $mk_user);
 
 	    	$this->access->prepare($query);
 	    	$this->access->execute($to_execute);
-	    	return $this->access->fetch();
+	    	return $this->access->fetchAll();
 	    }
 
-	    public function createPassword($mk_user = false) {
+	    public function createPassword() {
 	    	$query = "INSERT INTO accounts(mk_user, title, slug, email, password) VALUES(:mk_user, :title, :slug, :email, :password)";
 
 	    	$data = $this->getPasswordData();

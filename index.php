@@ -16,7 +16,7 @@
 		$user_data = $login->check();
 		if($user_data) {
 			$session_data = array(
-				"mk" => $user_data["mk"],
+				"mk_user" => $user_data["mk"],
 				"name" => $user_data["name"],
 				"email" => $user_data["email"]
 			);
