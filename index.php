@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require 'vendor/autoload.php';
 	use Auth\ManageLogin;
 	use Auth\ManageSession;
@@ -14,8 +15,6 @@
 		$login->set($login_data);
 		$user_data = $login->check();
 		if($user_data) {
-			$session->startSession();
-
 			$session_data = array(
 				"mk" => $user_data["mk"],
 				"name" => $user_data["name"],

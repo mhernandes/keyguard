@@ -35,9 +35,5 @@
 	    public function fetchAll() {
 	    	return $this->access->fetchAll();
 	    }
-
-	    public function __destruct() {
-	    	return $this->access->close();
-	    }
 	}
 ?>

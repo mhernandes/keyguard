@@ -22,7 +22,7 @@
 	    }
 
 	    public function encode() {
-	    	$this->coding->encode();
+	    	return $this->coding->encode();
 	    }
 	}
 ?>

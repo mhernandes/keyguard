@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	$page_name = 'KeyGuard - PassManager';
 	include 'partials/header.php';
 	include 'partials/menu.php';

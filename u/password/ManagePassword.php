@@ -6,7 +6,7 @@
 	 * summary
 	 */
 	class ManagePassword {
-		private $password
+		private $password;
 	    /**
 	     * summary
 	     */

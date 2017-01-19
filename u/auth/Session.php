@@ -16,10 +16,10 @@
 	    }
 
 	    public function startSession($session_name = "KeyGuard") {
-	    	if (session_status() !== PHP_SESSION_ACTIVE) { return false; }
+	    	/*if (session_status() !== PHP_SESSION_ACTIVE) { return false; }
 	    	session_name($session_name);
-	    	session_start();
-	    	return $this;
+	    	session_start();*/
+	    	return true;
 	    }
 
 	    public function setSessionData($data = array()) {
@@ -45,7 +45,9 @@
 	    }
 
 	    public function check() {
-	    	if ($_SESSION['name'] OR $_SESSION['email']) {
+	    	$name = $_SESSION['name'];
+	    	$email = $_SESSION['email'];
+	    	if($name OR $email) {
 	    		return true;
 	    	} else {
 	    		$this->redirect("index.php");

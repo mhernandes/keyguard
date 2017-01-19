@@ -22,7 +22,7 @@
 	    }
 
 	    public function encode() {
-	    	$this->pass = base64_encode($this->pass)
+	    	$this->pass = base64_encode($this->pass);
 	    	return $this->pass;
 	    }
 	}

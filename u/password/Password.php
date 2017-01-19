@@ -41,7 +41,7 @@
 
 	    	$data = $this->getPasswordData();
 
-	    	$to_execute = array(":mk_user" = $data["mk_user"]);
+	    	$to_execute = array(":mk_user" => $data["mk_user"]);
 
 	    	$this->access->prepare($query);
 	    	$this->access->execute($to_execute);
@@ -56,11 +56,11 @@
 	    	$data = $this->getPasswordData();
 
 	    	$to_execute = array(
-	    		":mk_user" = $data["mk_user"],
-	    		":title" = $data["title"],
-	    		":slug" = $data["slug"],
-	    		":email" = $data["email"],
-	    		":password" = $data["password"]
+	    		":mk_user" => $data["mk_user"],
+	    		":title" => $data["title"],
+	    		":slug" => $data["slug"],
+	    		":email" => $data["email"],
+	    		":password" => $data["password"]
 	    	);
 
 	    	$this->access->prepare($query);
