@@ -31,13 +31,17 @@
 	    	return $userdata;
 	    }
 
+	    public function getUserData() {
+	    	return $this->checkUser();
+	    }
+
 	    protected function decodePass() {
 	    	return $this->password;
 	    }
 
 	    public function checkUser() {
 	    	$pass = $this->password;
-	    	$query = "SELECT email, password FROM users WHERE email = :email AND password = :password";
+	    	$query = "SELECT name, email, password FROM users WHERE email = :email AND password = :password";
 	    	
 	    	$execute = array(
 	    		":email" => $this->email,
@@ -58,13 +62,5 @@
 	    public function __destruct() {
 	    	$this->access->close();
 	    }
-
-	    protected static function getInstance() {
-		    if (!isset(static::$instance)) {
-		        static::$instance = new static;
-		    }
-
-		    return static::$instance;
-		}
 	}
 ?>

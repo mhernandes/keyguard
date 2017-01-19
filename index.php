@@ -1,7 +1,9 @@
 <?php
 	require 'vendor/autoload.php';
 	use Auth\ManageLogin;
+	use Auth\ManageSession;
 	$login = new ManageLogin();
+	$session = new ManageSession();
 
 	if (isset($_POST["logging"])) {
 		$login_data = array(
@@ -10,9 +12,18 @@
 		);
 
 		$login->set($login_data);
-		if($login->check()) {
-			// Start a new session with user's data
-			echo 'go';
+		$user_data = $login->check();
+		if($user_data) {
+			$session->startSession();
+
+			$session_data = array(
+				"name" => $user_data["name"],
+				"email" => $user_data["email"]
+			);
+			
+			$session->setSessionData($session_data);
+			$session->registerSessionData();
+			$session->redirect("u/");
 		} else {
 			echo 'fall<br>';
 		}

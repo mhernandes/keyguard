@@ -23,5 +23,9 @@
 	    public function check() {
 	    	return $this->login->checkUser();
 	    }
+
+	    public function getUserData() {
+	    	return $this->login->getUserData();
+	    }
 	}
 ?>

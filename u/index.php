@@ -1,9 +1,9 @@
 <?php
 	$page_name = 'KeyGuard - PassManager';
+	require_once '../vendor/autoload.php';
 	include 'partials/header.php';
 	include 'partials/menu.php';
 	include 'partials/identity.php';
-	require_once '../vendor/autoload.php';
 ?>
 
 <section class="see">
