@@ -1,5 +1,5 @@
 <?php 
-	require 'vendor/autoload.php';
+	/*require 'vendor/autoload.php';
 	use DAO\Access;
 
 	$ac = new Access();
@@ -8,5 +8,9 @@
 	$ac->execute();
 	echo '<pre>';
 	print_r($ac->fetchAll());
-	echo '</pre>';
+	echo '</pre>';*/
+
+	echo '<pre>';
+	$_SESSION['name'] = "mata";
+	print_r($_SESSION['name']);
 ?>
