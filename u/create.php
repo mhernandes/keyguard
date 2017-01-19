@@ -4,6 +4,12 @@
 	include 'partials/menu.php';
 	include 'partials/identity.php';
 	include '../vendor/autoload.php';
+	use Key\ManagePassword;
+	use Auth\ManageSession;
+
+	$password = new ManagePassword();
+	$session = new ManageSession();
+	$session->check();
 ?>
 
 <section class="create">

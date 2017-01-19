@@ -45,7 +45,7 @@
 	    }
 
 	    public function check() {
-	    	if ($_SESSION['username'] OR $_SESSION['name']) {
+	    	if ($_SESSION['name'] OR $_SESSION['email']) {
 	    		return true;
 	    	} else {
 	    		$this->redirect("index.php");
