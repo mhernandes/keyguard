@@ -1,6 +1,6 @@
 <nav class="menu">
 	<a href="" class="menu__username">
-		User Name
+		<?php echo $_SESSION["name"]; ?>
 	</a>
 
 	<ul class="menu__links">
