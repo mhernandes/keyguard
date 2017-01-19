@@ -22,12 +22,12 @@
 	    	return $this->password->getPasswordData();
 	    }
 
-	    public function getAllPasswords($user_mk = false) {
-	    	return $this->password->getAllPasswords($user_mk);
+	    public function getAllPasswords($mk_user = false) {
+	    	return $this->password->getAllPasswords($mk_user);
 	    }
 
-	    public function createPassword($user_mk = false) {
-	    	return $this->password->createPassword($user_mk);
+	    public function createPassword($mk_user = false) {
+	    	return $this->password->createPassword($mk_user);
 	    }
 	}
 ?>

@@ -10,7 +10,7 @@
 		private $access;
 		private $coding;
 		private $password_data = array(
-			"user_mk" => 0,
+			"mk_user" => 0,
 			"title" => "",
 			"slug" => "",
 			"email" => "",
@@ -23,7 +23,7 @@
 	    }
 
 	    public function setPasswordData($data = array()) {
-	    	$this->password_data["user_mk"] = $data["user_mk"];
+	    	$this->password_data["mk_user"] = $data["mk_user"];
 	    	$this->password_data["title"] = $data["title"];
 	    	$this->password_data["slug"] = $data["slug"];
 	    	$this->password_data["email"] = $data["email"];
@@ -34,9 +34,7 @@
 	    	return $this->password_data;
 	    }
 
-	    public function getAllPasswords($user_mk = false) {
-	    	if (!$this->checkUser($user_mk)) { return false; }
-
+	    public function getAllPasswords($mk_user = false) {
 	    	$query = "SELECT * FROM accounts WHERE mk_user = :mk_user";
 
 	    	$data = $this->getPasswordData();
@@ -48,9 +46,7 @@
 	    	return $this->access->fetch();
 	    }
 
-	    public function createPassword($user_mk = false) {
-	    	if (!$this->checkUser($user_mk)) { return false; }
-
+	    public function createPassword($mk_user = false) {
 	    	$query = "INSERT INTO accounts(mk_user, title, slug, email, password) VALUES(:mk_user, :title, :slug, :email, :password)";
 
 	    	$data = $this->getPasswordData();
