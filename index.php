@@ -17,6 +17,7 @@
 			$session->startSession();
 
 			$session_data = array(
+				"mk" => $user_data["mk"],
 				"name" => $user_data["name"],
 				"email" => $user_data["email"]
 			);
@@ -25,7 +26,7 @@
 			$session->registerSessionData();
 			$session->redirect("u/");
 		} else {
-			echo 'fall<br>';
+			echo 'fail';
 		}
 	}
 ?>

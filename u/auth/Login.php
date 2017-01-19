@@ -41,7 +41,7 @@
 
 	    public function checkUser() {
 	    	$pass = $this->password;
-	    	$query = "SELECT name, email, password FROM users WHERE email = :email AND password = :password";
+	    	$query = "SELECT mk, name, email, password FROM users WHERE email = :email AND password = :password";
 	    	
 	    	$execute = array(
 	    		":email" => $this->email,
