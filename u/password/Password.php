@@ -1,6 +1,7 @@
 <?php
 	namespace Key;
 	use DAO\ManageAccess;
+	use Key\ManageCoding;
 
 	/**
 	 * summary
@@ -8,7 +9,7 @@
 	class Password {
 		private $access;
 		private $coding;
-		private $pass_data = array(
+		private $password_data = array(
 			"user_mk" => 0,
 			"title" => "",
 			"slug" => "",
@@ -18,46 +19,52 @@
 
 	    public function __construct() { 
 	    	$this->access = new ManageAccess();
+	    	$this->coding = new ManageCoding();
 	    }
 
-	    public function createPassword($data = array()) {
-	    	$this->pass_data["user_mk"] = $data["user_mk"];
-	    	$this->pass_data["title"] = $data["title"];
-	    	$this->pass_data["slug"] = $data["slug"];
-	    	$this->pass_data["email"] = $data["email"];
-	    	$this->pass_data["password"] = $data["password"];
+	    public function setPasswordData($data = array()) {
+	    	$this->password_data["user_mk"] = $data["user_mk"];
+	    	$this->password_data["title"] = $data["title"];
+	    	$this->password_data["slug"] = $data["slug"];
+	    	$this->password_data["email"] = $data["email"];
+	    	$this->password_data["password"] = $this->coding->encode($data["password"]);
 	    }
 
-	    public function checkUser($user_mk = false) {
-
-	    	if (!$user_mk) { $user_mk = $this->pass_data['user_mk']; }
-
-	    	$query = "SELECT mk FROM users WHERE mk = '$user_mk'";
-	    	$this->access->prepare($query);
-	    	
-	    	if($this->access->fetch()) {
-	    		return true;
-	    	} else {
-	    		return false;
-	    	}
+	    public function getPasswordData() {
+	    	return $this->password_data;
 	    }
 
-	    public function getPasswords($user_mk = false) {
+	    public function getAllPasswords($user_mk = false) {
 	    	if (!$this->checkUser($user_mk)) { return false; }
 
-	    	$query = array(
-	    		"what" => "*", 
-	    		"from" => "accounts",
-	    		"where" => "user_mk = '$this->user_mk'"
+	    	$query = "SELECT * FROM accounts WHERE mk_user = :mk_user";
+
+	    	$data = $this->getPasswordData();
+
+	    	$to_execute = array(":mk_user" = $data["mk_user"]);
+
+	    	$this->access->prepare($query);
+	    	$this->access->execute($to_execute);
+	    	return $this->access->fetch();
+	    }
+
+	    public function createPassword($user_mk = false) {
+	    	if (!$this->checkUser($user_mk)) { return false; }
+
+	    	$query = "INSERT INTO accounts(mk_user, title, slug, email, password) VALUES(:mk_user, :title, :slug, :email, :password)";
+
+	    	$data = $this->getPasswordData();
+
+	    	$to_execute = array(
+	    		":mk_user" = $data["mk_user"],
+	    		":title" = $data["title"],
+	    		":slug" = $data["slug"],
+	    		":email" = $data["email"],
+	    		":password" = $data["password"]
 	    	);
 
-	    	$ret = $this->access->select($query);
-
-	    	if ($ret) {
-	    		return $ret;
-	    	} else {
-	    		return false;
-	    	}
+	    	$this->access->prepare($query);
+	    	return $this->access->execute($to_execute);
 	    }
 	}
 ?>
