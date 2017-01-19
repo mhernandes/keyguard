@@ -40,16 +40,16 @@
 	    	return $this;
 	    }
 
+	    public function redirect($redirect) {
+	    	header("location: /keyguard/".$redirect);
+	    }
+
 	    public function check() {
 	    	if ($_SESSION['username'] OR $_SESSION['name']) {
 	    		return true;
 	    	} else {
-	    		return false;
+	    		$this->redirect("index.php");
 	    	}
-	    }
-
-	    public function redirect($redirect) {
-	    	header("location: ".$redirect);
 	    }
 
 	    public function destroy() {
