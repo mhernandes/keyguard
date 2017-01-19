@@ -32,5 +32,9 @@
 	    public function destroy() {
 	    	return $this->session->destroy();
 	    }
+
+	    public function redirect($redirect) {
+	    	return $this->session->redirect($redirect);
+	    }
 	}
 ?>

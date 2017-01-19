@@ -48,6 +48,10 @@
 	    	}
 	    }
 
+	    public function redirect($redirect) {
+	    	header("location: ".$redirect);
+	    }
+
 	    public function destroy() {
 	    	session_destroy();
 	    	return $this;
