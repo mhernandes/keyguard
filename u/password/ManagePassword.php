@@ -34,6 +34,10 @@
 	    	return $this->password->getPassword($slug);
 	    }
 
+	    public function getPasswordMk() {
+	    	return $this->password->getPasswordMk();
+	    }
+
 	    public function updatePassword() {
 	    	return $this->password->updatePassword();
 	    }

@@ -32,6 +32,9 @@
 		);
 
 		$password->setPasswordData($data);
+		print_r($password->getPasswordData());
+		echo "<br>";
+		print_r($password->getPasswordMk());
 		if ($password->updatePassword()) {
 			echo 'Go!';
 		} else {

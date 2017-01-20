@@ -10,6 +10,7 @@
 		private $access;
 		private $coding;
 		private $password_data = array(
+			"mk" => 0,
 			"mk_user" => 0,
 			"title" => "",
 			"slug" => "",
@@ -29,7 +30,8 @@
 	    	$this->password_data["slug"] = $data["slug"];
 	    	$this->password_data["username"] = $data["username"];
 	    	$this->password_data["email"] = $data["email"];
-	    	$this->password_data["password"] = $this->coding->encode($data["password"]);
+	    	$this->coding->set($data["password"]);
+	    	$this->password_data["password"] = $this->coding->encode();
 	    }
 
 	    public function getPasswordData() {
@@ -74,7 +76,8 @@
 	    }
 
 	    public function getPasswordMk() {
-	    	$data = $this->getPassword($this->data["slug"]);
+	    	$slug = $this->password_data["slug"];
+	    	$data = $this->getPassword($slug);
 	    	return $data["mk"];
 	    }
 
@@ -83,15 +86,15 @@
 
 	    	$data = $this->getPasswordData();
 
-	    	$this->data["mk"] = $this->getPasswordMk();
+	    	$mk = $this->getPasswordMk();
 
 	    	$to_execute = array(
-	    		":mk" => $data["mk"],
 	    		":title" => $data["title"],
 	    		":slug" => $data["slug"],
 	    		":username" => $data["username"],
 	    		":email" => $data["email"],
-	    		":password" => $data["password"]
+	    		":password" => $data["password"],
+	    		":mk" => $mk
 	    	);
 
 	    	$this->access->prepare($query);
