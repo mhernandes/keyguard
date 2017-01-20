@@ -24,12 +24,5 @@
 				Edit
 			</a>
 		</li>
-
-		<li class="menu__links_unit">
-			<a href="generate.php">
-				<i class="menu__links_unit_icon" icon=""></i>
-				Generate
-			</a>
-		</li>
 	</ul>
 </nav>
