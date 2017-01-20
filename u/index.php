@@ -2,10 +2,6 @@
 	session_start();
 	$page_name = 'KeyGuard - PassManager';
 	require_once '../vendor/autoload.php';
-	include 'partials/header.php';
-	include 'partials/menu.php';
-	include 'partials/identity.php';
-	include '../vendor/autoload.php';
 
 	use Key\ManagePassword;
 	use Auth\ManageSession;
@@ -13,6 +9,11 @@
 	$password = new ManagePassword();
 	$session = new ManageSession();
 	$session->check();
+
+	include 'partials/header.php';
+	include 'partials/menu.php';
+	include 'partials/identity.php';
+	
 	$all_passwords = $password->getAllPasswords($_SESSION["mk_user"]);
 ?>
 

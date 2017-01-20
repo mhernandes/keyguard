@@ -1,10 +1,18 @@
 <?php
 	session_start();
 	$page_name = 'KeyGuard - PassManager';
+	require_once '../vendor/autoload.php';
+
+	use Key\ManagePassword;
+	use Auth\ManageSession;
+
+	$password = new ManagePassword();
+	$session = new ManageSession();
+	$session->check();
+
 	include 'partials/header.php';
 	include 'partials/menu.php';
 	include 'partials/identity.php';
-	include '../vendor/autoload.php';
 	
 	if (!isset($_GET["edit"])) {
 		header("location: /keyguard/u/");
