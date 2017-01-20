@@ -17,6 +17,9 @@
 	if (!isset($_GET["edit"])) {
 		header("location: /keyguard/u/");
 	}
+
+	$to_edit = $_GET["edit"];
+	echo $to_edit;
 ?>
 
 <section class="edit create">

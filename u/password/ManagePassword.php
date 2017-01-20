@@ -29,5 +29,9 @@
 	    public function createPassword() {
 	    	return $this->password->createPassword();
 	    }
+
+	    public function getPassword($slug) {
+	    	return $this->password->getPassword($slug);
+	    }
 	}
 ?>

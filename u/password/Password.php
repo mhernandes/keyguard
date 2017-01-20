@@ -60,5 +60,14 @@
 	    	$this->access->prepare($query);
 	    	return $this->access->execute($to_execute);
 	    }
+
+	    public function getPassword($slug) {
+	    	$query = "SELECT * FROM accounts WHERE slug = :slug";
+	    	$to_execute = array(":slug" => $slug);
+	    	$this->access->prepare($query);
+	    	$this->access->execute($to_execute);
+
+	    	return $this->access->fetch();
+	    }
 	}
 ?>
