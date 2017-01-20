@@ -17,12 +17,5 @@
 				Create
 			</a>
 		</li>
-
-		<li class="menu__links_unit">
-			<a href="edit.php">
-				<i class="menu__links_unit_icon" icon=""></i>
-				Edit
-			</a>
-		</li>
 	</ul>
 </nav>
