@@ -20,7 +20,7 @@
 	<?php
 		foreach ($all_passwords as $pass) {
 			echo '<article class="see__unit" color="'.$pass["slug"].'">';
-			echo '<a href="" class="see__unit_link">'.$pass["title"].'</a>';
+			echo '<a href="edit.php?edit='.$pass["slug"].'" class="see__unit_link">'.$pass["title"].'</a>';
 			echo '</article>';
 		}
 	?>
