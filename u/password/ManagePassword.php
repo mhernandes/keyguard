@@ -33,5 +33,9 @@
 	    public function getPassword($slug) {
 	    	return $this->password->getPassword($slug);
 	    }
+
+	    public function updatePassword() {
+	    	return $this->password->updatePassword();
+	    }
 	}
 ?>

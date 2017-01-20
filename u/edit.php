@@ -18,26 +18,44 @@
 		header("location: /keyguard/u/");
 	}
 
-	$to_edit = $_GET["edit"];
-	echo $to_edit;
+	$slug = $_GET["edit"];
+	$password_data = $password->getPassword($slug);
+
+	if (isset($_POST["update"])) {
+		$data = array(
+			"mk_user" => $_SESSION["mk_user"],
+			"title" => $_POST["title"],
+			"slug" => strtolower($_POST["title"]),
+			"username" => $_POST["username"],
+			"email" => $_POST["email"],
+			"password" => $_POST["password"]
+		);
+
+		$password->setPasswordData($data);
+		if ($password->updatePassword()) {
+			echo 'Go!';
+		} else {
+			echo 'Failed!';
+		}
+	}
 ?>
 
 <section class="edit create">
-	<form action="" class="create__form">
-		<label for="" class="create__form_label">Name</label>
-		<input type="text" class="create__form_input" name="" placeholder="Facebook" id="">
+	<form action="" method="post" class="create__form">
+		<label for="name" class="create__form_label">Name</label>
+		<input type="text" class="create__form_input" value="<?php echo $password_data["title"]; ?>" name="title" placeholder="Facebook" id="name">
 
-		<label for="" class="create__form_label">Email</label>
-		<input type="text" class="create__form_input" name="" placeholder="your@email.com" id="">
+		<label for="email" class="create__form_label">Email</label>
+		<input type="text" class="create__form_input" value="<?php echo $password_data["email"]; ?>" name="email" placeholder="your@email.com" id="email">
 		
-		<label for="" class="create__form_label">Username</label>
-		<input type="text" class="create__form_input" name="" placeholder="@someone" id="">
+		<label for="username" class="create__form_label">Username</label>
+		<input type="text" class="create__form_input" value="<?php echo $password_data["username"]; ?>" name="username" placeholder="@someone" id="username">
 		
-		<label for="" class="create__form_label">Password</label>
-		<input type="password" class="create__form_input" name="" id="">
+		<label for="pass" class="create__form_label">Password</label>
+		<input type="password" class="create__form_input" value="<?php echo $password_data["password"]; ?>" name="password" id="pass">
 
-		<input type="submit" class="create__form_input" value="Update">
-		<input type="submit" class="create__form_input" value="Delete">
+		<input type="submit" class="create__form_input" name="update" value="Update">
+		<input type="submit" class="create__form_input" name="delete" value="Delete">
 	</form>
 </section>
 

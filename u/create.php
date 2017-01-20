@@ -19,6 +19,7 @@
 			"mk_user" => $_SESSION["mk_user"],
 			"title" => $_POST["title"],
 			"slug" => strtolower($_POST["title"]),
+			"username" => $_POST["username"],
 			"email" => $_POST["email"],
 			"password" => $_POST["password"]
 		);

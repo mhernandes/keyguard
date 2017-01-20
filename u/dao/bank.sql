@@ -13,6 +13,7 @@ CREATE TABLE accounts (
 	mk INT PRIMARY KEY AUTO_INCREMENT,
 	title VARCHAR(255) NOT NULL,
 	slug VARCHAR(255) NOT NULL,
+	username VARCHAR(255) NOT NULL,
 	email VARCHAR(255) NOT NULL,
 	password VARCHAR(255) NOT NULL,
 	register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -22,11 +23,11 @@ CREATE TABLE accounts (
 INSERT INTO users(name, username, email, password) 
 VALUES('Matheus', 'matheus', 'midia.matheus@gmail.com', '12345');
 
-INSERT INTO accounts(mk_user, title, slug, email, password) 
-VALUES(1, 'Facebook', 'facebook', 'midia.matheus@gmail.com', '12345');
+INSERT INTO accounts(mk_user, title, slug, username, email, password) 
+VALUES(1, 'Facebook', 'facebook', 'mhernandes', 'midia.matheus@gmail.com', '12345');
 
-INSERT INTO accounts(mk_user, title, slug, email, password) 
-VALUES(1, 'Snapchat', 'snapchat', 'midia.matheus@gmail.com', '12345');
+INSERT INTO accounts(mk_user, title, slug, username, email, password) 
+VALUES(1, 'Snapchat', 'snapchat', 'mhernandes', 'midia.matheus@gmail.com', '12345');
 
-INSERT INTO accounts(mk_user, title, slug, email, password) 
-VALUES(1, 'Instagram', 'instagram', 'midia.matheus@gmail.com', '12345');
+INSERT INTO accounts(mk_user, title, slug, username, email, password) 
+VALUES(1, 'Instagram', 'instagram', 'mhernandes', 'midia.matheus@gmail.com', '12345');

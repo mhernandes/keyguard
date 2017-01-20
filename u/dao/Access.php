@@ -95,6 +95,10 @@
 	    	return $this->statement->fetchAll();
 	    }
 
+	    public function rowCount() {
+	    	return $this->statement->rowCount();
+	    }
+
 	    // Close connection on destruct
 	    public function __destruct() {
 	    	$this->connection = NULL;

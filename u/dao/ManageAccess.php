@@ -35,5 +35,9 @@
 	    public function fetchAll() {
 	    	return $this->access->fetchAll();
 	    }
+
+	    public function rowCount() {
+	    	return $this->access->rowCount();
+	    }
 	}
 ?>
