@@ -14,7 +14,7 @@
 
 	if (isset($_POST['create'])) {
 		$data = array(
-			"mk_user" => $_SESSION["mk"],
+			"mk_user" => $_SESSION["mk_user"],
 			"title" => $_POST["title"],
 			"slug" => strtolower($_POST["title"]),
 			"email" => $_POST["email"],
