@@ -2,11 +2,14 @@
 	session_start();
 	$page_name = 'KeyGuard - PassManager';
 	include 'partials/header.php';
+	include 'partials/menu.php';
+	include 'partials/identity.php';
+	include '../vendor/autoload.php';
+	
+	if (!isset($_GET["edit"])) {
+		header("location: /keyguard/u/");
+	}
 ?>
-
-<?php include 'partials/menu.php'; ?>
-
-<?php include 'partials/identity.php'; ?>
 
 <section class="edit create">
 	<form action="" class="create__form">
