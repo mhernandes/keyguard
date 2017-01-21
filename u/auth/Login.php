@@ -3,25 +3,36 @@
 	use DAO\ManageAccess;
 	use \PDO;
 	/**
-	 * summary
+	 * @name Login
+	 * @description Class for logging
+	 * @author Matheus Hernandes
 	 */
 	class Login	{
 		private $access;
 		protected $email;
 		protected $password;
-	    /**
-	     * summary
-	     */
 
+
+	    /**
+		 * @description Create an instance of ManageAccess and store in $access attribute
+		 */
 	    public function __construct() {
 	        $this->access = new ManageAccess();
 	    }
 
+	    /**
+		 * @description Set user data for logging
+		 * @param $userdata is an array containing user data
+		 */
 	    public function setData($userdata = array()) {
 	    	$this->email = $userdata["email"];
 	    	$this->password = $userdata["password"];
 	    }
 
+	    /**
+		 * @description Get the user data setted 
+		 * @return an array containing user data setted
+		 */
 	    public function getData() {
 	    	$userdata = array(
 	    		"email" => $this->email,
@@ -31,14 +42,24 @@
 	    	return $userdata;
 	    }
 
+	    /**
+		 * @return $this->checkUser with verify if the user exists
+		 */
 	    public function getUserData() {
 	    	return $this->checkUser();
 	    }
 
+	    /**
+		 * @return the decoded password
+		 */
 	    protected function decodePass() {
 	    	return $this->password;
 	    }
 
+	    /**
+		 * @description Verify if the user exists
+		 * @return an array containing user data from database
+		 */
 	    public function checkUser() {
 	    	$pass = $this->password;
 	    	$query = "SELECT mk, name, email, password FROM users WHERE email = :email AND password = :password";
@@ -59,6 +80,9 @@
 	    	}
 	    }
 
+	    /**
+		 * @description close the connection
+		 */
 	    public function __destruct() {
 	    	$this->access->close();
 	    }

@@ -20,7 +20,9 @@
 
 		private $connection;
 
-	    // Start a connection
+	    /**
+		 * @description Create an PDO instance and store in $access
+		 */
 	    public function __construct($exception = false) {
 	        try {
 	        	$this->connection = new PDO("mysql:host=".$this->host.";dbname=".$this->database, $this->user, $this->passwd);
@@ -33,13 +35,19 @@
 	        }
 	    }
 
-	    // Prepare a MySQL script
+	    /**
+		 * @description Prepare an SQL script
+		 * @param $query is an SQL query
+		 * @param $driver_options is the driver' options
+		 */
 	    public function prepare($query, $driver_options = array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY)) {
 	    	$this->statement = $this->connection->prepare($query, $driver_options);
-	    	return $this;
 	    }
 
-	    // Execute a MySQL script
+	    /**
+		 * @description Execute an prepared SQL script
+		 * @param $execute array to bind values, if is false you can use bindValue() a/o bindParam()
+		 */
 	    public function execute($execute) {
 	    	try {
 	    		if ($execute !== false) {
@@ -52,29 +60,11 @@
 	    	}
 	    }
 
-	    // Inserting data
-	    public function insert($insert = array()) {
-	    	if (!$insert) { return false; }
-
-	    	$query = $tables = $values = "";
-
-	    	for ($i = 0; $i < count($insert); $i++) {
-	    		$tables .= $insert[$i].", ";
-	    	}
-
-
-	    	for ($i = 0; $i < count($insert); $i++) {
-	    		$values .= ":".$insert[$i].", ";
-	    	}
-
-	    	$tables = str_replace(", ", "", $tables, strrpos($tables, ", "));
-	    	$values = str_replace(", ", "", $values, strrpos($values, ", "));
-	    	$query = "INSERT INTO ".$table."(".$tables.") VALUES (".$values.")";
-
-	    	$this->prepare($query);
-	    }
-
-	    // Bind a MySQL script parameters
+	    /**
+		 * @description Bind values
+		 * @param $paramenters is an array with value to bind
+		 * @param $bindparam if is true this method will use bindParam() instead bindValue()
+		 */
 	    public function bind($parameters, $bindparam = false) {
 	    	if (is_array($parameters)) {
 	    		foreach ($parameters as $key => $value) {
@@ -89,24 +79,42 @@
 	    	}
 	    }
 
+	    /**
+		 * @description bind a value
+		 * @param $key is the query' key
+		 * @param $value is the query' value
+		 */
 	    public function bindValue($key, $value) {
 	    	$this->statement->bindValue($key, $value);
 	    }
 
-	    // Fetch data
+	    /**
+		 * @description Fetch the next row
+		 * @return an array with the next result
+		 */
 	    public function fetch() {
 			return $this->statement->fetch();
 	    }
 
+	    /**
+		 * @description Fetch all of the results
+		 * @return an array with all of the results
+		 */
 	    public function fetchAll() {
 	    	return $this->statement->fetchAll();
 	    }
 
+	    /**
+		 * @description Count how many rows were affected by the last SQL query
+		 * @return an integer
+		 */
 	    public function rowCount() {
 	    	return $this->statement->rowCount();
 	    }
 
-	    // Close connection on destruct
+	    /**
+		 * @description Close the connection
+		 */
 	    public function __destruct() {
 	    	$this->connection = NULL;
 	    }

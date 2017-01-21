@@ -15,10 +15,6 @@
 	        $this->access = new ManageAccess();
 	    }
 
-	    public function startSession($session_name = "KeyGuard") {
-	    	return true;
-	    }
-
 	    public function setSessionData($data = array()) {
 	    	foreach ($data as $key => $value) {
 	    		$this->session_data[$key] = $value;

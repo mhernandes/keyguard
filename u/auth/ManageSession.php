@@ -13,10 +13,6 @@
 	        $this->session = new Session();
 	    }
 
-	    public function startSession($session_name = "KeyGuard") {
-	    	return $this->session->startSession($session_name);
-	    }
-
 	    public function setSessionData($data = array()) {
 	    	return $this->session->setSessionData($data);
 	    }
