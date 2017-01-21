@@ -24,21 +24,28 @@
 	if (isset($_POST["update"])) {
 		$data = array();
 		$data["mk_user"] = $_SESSION["mk_user"];
-		$data["title"] = ($_SESSION["mk_user"]);
+		
+		if (!in_array($_POST["title"], $password_data)) {
+			$data["title"] = $_POST["title"];
+			$data["slug"] = strtolower($_POST["title"]);
+		}
 
-		$data = array(
-			"mk_user" => $_SESSION["mk_user"],
-			"title" => $_POST["title"],
-			"slug" => strtolower($_POST["title"]),
-			"username" => $_POST["username"],
-			"email" => $_POST["email"],
-			"password" => $_POST["password"]
-		);
+		if (!in_array($_POST["username"], $password_data)) {
+			$data["username"] = $_POST["username"];
+		}
 
-		$password->setPasswordData($data);
-		echo '<pre>';
-		print_r($password->updatePassword());
-		echo '</pre>';
+		if (!in_array($_POST["email"], $password_data)) {
+			$data["email"] = $_POST["email"];
+		}
+
+		if (!in_array($_POST["password"], $password_data)) {
+			$data["password"] = $_POST["password"];
+		}
+
+		$password->setPasswordData(array("slug" => $password_data["slug"]));
+		$password->setNewPasswordData($data);
+		$password->updatePassword();
+		$session->redirect("u/");
 	}
 ?>
 

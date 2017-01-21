@@ -25,11 +25,8 @@
 		);
 
 		$password->setPasswordData($data);
-		if ($password->createPassword()) {
-			echo 'Go!';
-		} else {
-			echo 'Failed!';
-		}
+		$password->createPassword();
+		$session->redirect("u/");
 	}
 ?>
 

@@ -16,9 +16,6 @@
 	    }
 
 	    public function startSession($session_name = "KeyGuard") {
-	    	/*if (session_status() !== PHP_SESSION_ACTIVE) { return false; }
-	    	session_name($session_name);
-	    	session_start();*/
 	    	return true;
 	    }
 
