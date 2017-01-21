@@ -15,7 +15,7 @@
 	include 'partials/identity.php';
 	
 	if (!isset($_GET["edit"])) {
-		header("location: /keyguard/u/");
+		$session->redirect("u/");
 	}
 
 	$slug = $_GET["edit"];
