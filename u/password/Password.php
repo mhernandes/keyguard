@@ -9,15 +9,8 @@
 	class Password {
 		private $access;
 		private $coding;
-		private $password_data = array(
-			"mk" => 0,
-			"mk_user" => 0,
-			"title" => "",
-			"slug" => "",
-			"username" => "",
-			"email" => "",
-			"password" => ""
-		);
+		private $password_data;
+		private $new_password_data;
 
 	    public function __construct() { 
 	    	$this->access = new ManageAccess();
@@ -25,17 +18,27 @@
 	    }
 
 	    public function setPasswordData($data = array()) {
-	    	$this->password_data["mk_user"] = $data["mk_user"];
-	    	$this->password_data["title"] = $data["title"];
-	    	$this->password_data["slug"] = $data["slug"];
-	    	$this->password_data["username"] = $data["username"];
-	    	$this->password_data["email"] = $data["email"];
-	    	$this->coding->set($data["password"]);
-	    	$this->password_data["password"] = $this->coding->encode();
+	    	$this->password_data = $data;
+		    if (array_key_exists("password", $data)) {
+		    	$this->coding->set($data["password"]);
+		    	$this->password_data["password"] = $this->coding->encode();
+		    }
+	    }
+
+	    public function setNewPasswordData($newData = array()) {
+	    	$this->new_password_data = $newData;
+		    if (array_key_exists("password", $newData)) {
+		    	$this->coding->set($newData["password"]);
+		    	$this->new_password_data["password"] = $this->coding->encode();
+		    }
 	    }
 
 	    public function getPasswordData() {
 	    	return $this->password_data;
+	    }
+
+	    public function getNewPasswordData() {
+	    	return $this->new_password_data;
 	    }
 
 	    public function getAllPasswords($mk_user = false) {
@@ -76,15 +79,30 @@
 	    }
 
 	    public function getPasswordMk() {
+	    	if (!array_key_exists("slug", $this->password_data)) {
+	    		return false;
+	    	}
+
 	    	$slug = $this->password_data["slug"];
 	    	$data = $this->getPassword($slug);
 	    	return $data["mk"];
 	    }
 
 	    public function updatePassword() {
-	    	$query = "UPDATE accounts SET title = :title, slug = :slug, username = :username, email = :email, password = :password WHERE mk = :mk";
+	    	$to_update = "";
+	    	$to_execute = array();
 
-	    	$data = $this->getPasswordData();
+	    	foreach ($this->new_password_data as $key => $value) {
+	    		$to_update .= $key." = :".$key.", ";
+	    		$to_execute[":".$key] = "".$value;
+	    	}
+
+	    	$to_update = substr_replace($to_update, "", strrpos($to_update, ", "), strlen(", "));
+    		$to_execute[":mk"] = $this->getPasswordMk();
+	    	$query = "UPDATE accounts SET ".$to_update." WHERE mk = :mk";
+
+	    	/*$data = $this->getPasswordData();
+	    	//$query = "UPDATE accounts SET title = :title, slug = :slug, username = :username, email = :email, password = :password WHERE mk = :mk";
 
 	    	$mk = $this->getPasswordMk();
 
@@ -95,12 +113,19 @@
 	    		":email" => $data["email"],
 	    		":password" => $data["password"],
 	    		":mk" => $mk
-	    	);
+	    	);*/
 
 	    	$this->access->prepare($query);
-	    	$this->access->execute($to_execute);
-
-	    	return $this->access->rowCount();
+	    	$this->access->bind($to_execute);
+	    	//return $this->access->execute(false);
+	    	try {
+	        	return $this->access->execute(false);
+	        } catch(PDOException $e) {
+				$a = $e->getCode()." - ".$e->getMessage();
+	        	return $a;
+	        }
+	    	//return $this->access->rowCount();
+	    	//return $to_update;
 	    }
 	}
 ?>

@@ -40,13 +40,16 @@
 	    }
 
 	    // Execute a MySQL script
-	    public function execute($execute = array()) {
+	    public function execute($execute) {
 	    	try {
-	    		$this->statement->execute($execute);
+	    		if ($execute !== false) {
+	    			$this->statement->execute($execute);
+	    		} else {
+	    			$this->statement->execute();
+	    		}
 	    	} catch (PDOException $e) {
 	    		die($this->error_messages["execute"].$e->getMessagge());
 	    	}
-	    	return $this;
 	    }
 
 	    // Inserting data
@@ -76,14 +79,18 @@
 	    	if (is_array($parameters)) {
 	    		foreach ($parameters as $key => $value) {
 	    			if (!$bindparam) {
-	    				$this->connection->bindValue($key, $value);
+	    				$this->statement->bindValue($key, $value);
 	    			} else {
-	    				$this->connection->bindParam($key, $value);
+	    				$this->statement->bindParam($key, $value);
 	    			}
 	    		}
 	    	} else {
 	    		return false;
 	    	}
+	    }
+
+	    public function bindValue($key, $value) {
+	    	$this->statement->bindValue($key, $value);
 	    }
 
 	    // Fetch data

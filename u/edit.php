@@ -22,6 +22,10 @@
 	$password_data = $password->getPassword($slug);
 
 	if (isset($_POST["update"])) {
+		$data = array();
+		$data["mk_user"] = $_SESSION["mk_user"];
+		$data["title"] = ($_SESSION["mk_user"]);
+
 		$data = array(
 			"mk_user" => $_SESSION["mk_user"],
 			"title" => $_POST["title"],
@@ -32,14 +36,9 @@
 		);
 
 		$password->setPasswordData($data);
-		print_r($password->getPasswordData());
-		echo "<br>";
-		print_r($password->getPasswordMk());
-		if ($password->updatePassword()) {
-			echo 'Go!';
-		} else {
-			echo 'Failed!';
-		}
+		echo '<pre>';
+		print_r($password->updatePassword());
+		echo '</pre>';
 	}
 ?>
 

@@ -28,6 +28,10 @@
 	    	return $this->access->bind($parameters, $bindparam);
 	    }
 
+	    public function bindValue($key, $value) {
+	    	return $this->access->bindValue($key, $value);
+	    }
+
 	    public function fetch() {
 	    	return $this->access->fetch();
 	    }

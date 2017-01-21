@@ -1,16 +1,15 @@
 <?php 
-	/*require 'vendor/autoload.php';
-	use DAO\Access;
+	require_once 'vendor/autoload.php';
+	use Key\Password;
+	$password = new Password();
+	$password_data = $password->getPassword("snapchate");
 
-	$ac = new Access();
-	$query = "SELECT email, password FROM users WHERE email = 'midia.matheus@gmail.com' AND password = 12345";
-	$ac->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-	$ac->execute();
-	echo '<pre>';
-	print_r($ac->fetchAll());
-	echo '</pre>';*/
+	$newData = array(
+		"title" => "Snapchat",
+		"slug" => strtolower("Snapchat")
+	);
 
-	echo '<pre>';
-	$_SESSION['name'] = "mata";
-	print_r($_SESSION['name']);
-?>
+	$password->setPasswordData(array("slug" => "snapchate"));
+	$password->setNewPasswordData($newData);
+	echo '<pre><h1>Updated</h1>';
+	print_r($password->updatePassword());
