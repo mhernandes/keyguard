@@ -21,7 +21,7 @@
 		private $connection;
 
 	    /**
-		 * @description Create an PDO instance and store in $access
+		 * @description Create an PDO instance and store in $connection
 		 */
 	    public function __construct($exception = false) {
 	        try {

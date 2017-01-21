@@ -1,9 +1,10 @@
 <?php
 	namespace Auth;
 	use Auth\Login;
-
 	/**
-	 * summary
+	 * @name ManageLogin
+	 * @description Class for manage login class
+	 * @author Matheus Hernandes
 	 */
 	class ManageLogin {
 	    public $login;
