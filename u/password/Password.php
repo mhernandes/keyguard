@@ -106,5 +106,17 @@
         	$this->access->execute(false);
         	return $this->access->rowCount();
 	    }
+
+	    public function deletePassword() {
+	    	$query = "DELETE FROM accounts WHERE mk = :mk";
+	    	$mk = $this->getPasswordMk();
+	    	$bind = array(
+	    		":mk" => $mk 
+	    	);
+	    	$this->access->prepare($query);
+	    	$this->access->bind($bind);
+        	$this->access->execute(false);
+        	return $this->access->rowCount();	    	
+	    }
 	}
 ?>

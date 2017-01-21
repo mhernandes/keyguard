@@ -47,6 +47,12 @@
 		$password->updatePassword();
 		$session->redirect("u/");
 	}
+
+	if (isset($_POST["delete"])) {
+		$password->setPasswordData(array("slug" => $password_data["slug"]));
+		$password->deletePassword();
+		$session->redirect("u/");
+	}
 ?>
 
 <section class="edit create">

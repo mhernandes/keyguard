@@ -34,10 +34,6 @@
 	    	return $this->password->getAllPasswords($mk_user);
 	    }
 
-	    public function createPassword() {
-	    	return $this->password->createPassword();
-	    }
-
 	    public function getPassword($slug) {
 	    	return $this->password->getPassword($slug);
 	    }
@@ -46,8 +42,16 @@
 	    	return $this->password->getPasswordMk();
 	    }
 
+	    public function createPassword() {
+	    	return $this->password->createPassword();
+	    }
+
 	    public function updatePassword() {
 	    	return $this->password->updatePassword();
+	    }
+
+	    public function deletePassword() {
+	    	return $this->password->deletePassword();
 	    }
 	}
 ?>
