@@ -18,8 +18,16 @@
 	    	$this->password->setPasswordData($data);
 	    }
 
+	    public function setNewPasswordData($data = array()) {
+	    	$this->password->setNewPasswordData($data);
+	    }
+
 	    public function getPasswordData() {
 	    	return $this->password->getPasswordData();
+	    }
+
+	    public function getNewPasswordData() {
+	    	return $this->password->getNewPasswordData();
 	    }
 
 	    public function getAllPasswords($mk_user = false) {

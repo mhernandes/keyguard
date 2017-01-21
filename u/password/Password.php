@@ -90,42 +90,21 @@
 
 	    public function updatePassword() {
 	    	$to_update = "";
-	    	$to_execute = array();
+	    	$to_bind = array();
 
 	    	foreach ($this->new_password_data as $key => $value) {
 	    		$to_update .= $key." = :".$key.", ";
-	    		$to_execute[":".$key] = "".$value;
+	    		$to_bind[":".$key] = "".$value;
 	    	}
 
 	    	$to_update = substr_replace($to_update, "", strrpos($to_update, ", "), strlen(", "));
-    		$to_execute[":mk"] = $this->getPasswordMk();
+    		$to_bind[":mk"] = $this->getPasswordMk();
 	    	$query = "UPDATE accounts SET ".$to_update." WHERE mk = :mk";
 
-	    	/*$data = $this->getPasswordData();
-	    	//$query = "UPDATE accounts SET title = :title, slug = :slug, username = :username, email = :email, password = :password WHERE mk = :mk";
-
-	    	$mk = $this->getPasswordMk();
-
-	    	$to_execute = array(
-	    		":title" => $data["title"],
-	    		":slug" => $data["slug"],
-	    		":username" => $data["username"],
-	    		":email" => $data["email"],
-	    		":password" => $data["password"],
-	    		":mk" => $mk
-	    	);*/
-
 	    	$this->access->prepare($query);
-	    	$this->access->bind($to_execute);
-	    	//return $this->access->execute(false);
-	    	try {
-	        	return $this->access->execute(false);
-	        } catch(PDOException $e) {
-				$a = $e->getCode()." - ".$e->getMessage();
-	        	return $a;
-	        }
-	    	//return $this->access->rowCount();
-	    	//return $to_update;
+	    	$this->access->bind($to_bind);
+        	$this->access->execute(false);
+        	return $this->access->rowCount();
 	    }
 	}
 ?>
